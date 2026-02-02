@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="container"></div>
+    <script>
+      //Ajax(Asynchronous Javascript And Xml)
+      fetch("http://192.168.0.9:3000/students/all") //json문자열.
+        .then((resp) => resp.json()) //json문자열 => js 객체.
+        .then((data) => {
+          console.log(data);
+          const ulDom = document.createElement("ul"); //<ul></ul>
+          for (let student of data) {
+            const liDom = document.createElement("li"); //<ul></ul>
+            liDom.innerHTML = `${student.STUDNO}, ${student.NAME}`;
+            ulDom.appendChild(liDom);
+          } // end of for
+          document.querySelector("#container").appendChild(ulDom);
+        })
+        .catch(console.log);
+
+      const ary = [{ studno: 1101, name: "홍길동", score: 80 }];
+      // ulDom.innerHTML = "Hello"; //<ul>Hello</ul>
+      // liDom.innerHTML = "Apple";
+      // ulDom.appendChild(liDom); //<ul>hello<li>Apple</li></ul>
+      // console.log(ulDom);
+    </script>
+  </body>
+</html>
