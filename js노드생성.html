@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노드생성</title>
+  <style>
+    .accent{
+      background-color: slateblue;
+    }
+    #result{
+      width: 200px;
+      height: 200px;
+      background-color: aqua;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>노드생성</h1>
+  <div id="result"></div>
+  <script>
+    // <p class='accent'>주문완료</p>
+    let result = document.querySelector('#result');
+    for(let i=1; i<=5; i++){
+      //태그 생성
+      let nodeP = document.createElement('p'); //1.
+      //태그 내용 생성
+      let textNode = document.createTextNode('주문완료')//2-1.
+      //태그에 자식으로 내용추가
+      nodeP.appendChild(textNode);//2-1.
+      //태그에 속성 추가
+      nodeP.setAttribute('class', 'accent');//2-2.
+      //문서에 태그 추가
+      result.appendChild(nodeP);//3.
+    }
+    //setAttribute();
+    //getAttribute();
+  </script>
+</body>
+</html>

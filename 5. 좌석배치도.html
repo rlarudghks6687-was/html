@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좌석배치도</title>
+    <style>
+        table{
+            /* border: 1px solid #ccc; */
+            border-collapse: collapse;
+            empty-cells: hide;
+            margin-top: 30px;
+
+        }
+        td{
+            border: 1px solid #ccc;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>좌석배치도</h1>
+    <form name="output">
+        <label for="person">입장객 수</label>
+        <input type="text" id="person" name="person" size="5">
+        <label for="colNum">1줄 자릿 수</label> <!--행--> 
+        <input type="text" id="colNum" name="colNum" size="5">
+        <button type="button" id="btn">배치도</button>
+    </form>
+    <div id="layout"></div>
+
+    <script>
+        let person = document.querySelector('#person');
+        let col = document.querySelector('#colNum');
+        let btn = document.querySelector('#btn');
+        let result = document.querySelector('#layout');
+
+        btn.onclick = active;
+
+        function active(){
+            let p = person.value;
+            let c = col.value;
+            let line = Math.ceil(p / c);
+            let seat = 0;
+            let table = `<table>`;
+            for(let i = 1; i <= line; i++){
+                table += `<tr>`;
+                for(let j = 1; j <= c; j++){
+                    seat ++;
+                    if(seat > p){
+                        break;
+                    }
+                    table += `<td> ${seat} </td>`;
+                }    
+                table += `</tr>`;
+            }
+            table += `</table>`;
+            result.innerHTML = table;
+        }
+    </script>
+</body>
+</html>

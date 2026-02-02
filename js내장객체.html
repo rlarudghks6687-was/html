@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>내장객체</title>
+</head>
+<body>
+  <h1>내장객체</h1>
+  <script>
+    //내장 객체: 미리 정의 되어진 객체
+    //날짜 데이터
+    let today = new Date();
+    console.log(today);
+    let year = today.getFullYear();
+    let month = today.getMonth();
+    let date = today.getDate();
+    let day = today.getDay(); //숫자로 출력됨
+    
+    let week = '';
+    switch(day){
+      case 0 : week = '일'; break;
+      case 1 : week = '월'; break;
+      case 2 : week = '화'; break;
+      case 3 : week = '수'; break;
+      case 4 : week = '목'; break;
+      case 5 : week = '금'; break;
+      case 6 : week = '토'; 
+    }
+    console.log(`${year}년 ${month + 1}월  ${date}일 ${week}요일`)
+    console.log(new Date(1));
+    console.log(today.getTime());
+    console.log(new Date(1769481898383));
+    console.log(today.toLocaleDateString());
+    console.log(today.toLocaleTimeString());
+    console.log(today.toLocaleString());
+
+    let xmax = new Date('2026-12-25');
+    let remain = xmax - today;
+    remain = Math.floor(remain / (1000 * 60 * 60 * 24));
+    console.log(`크리스마스 까지 ${remain}일 남았습니다.`)
+
+    //수업시작한 지 며칠 되었을까요?
+    let firstDay = new Date('2026-01-12');
+    let passday = today - firstDay;
+    passday = Math.floor(passday / (1000*60*60*24));
+    console.log(`수업 시작한 지: ${passday}일`)
+
+    //수학 객체. 객체 생성하지 않고 사용
+    let randomNum = Math.floor(Math.random() * 51) + 50; //원하는 범위의 난수 만들기
+
+    //로또번호 발생(1~45까지 무작위 수 , 6개씩 5줄 만들기)
+    for(let i = 1; i <= 5 + 1; i++){
+      let lottos = [];
+      while(lottos.lenghs < 6){
+        let lotto = Math.floor(Math.random() * 45) + 1;
+        if(lottos.indexOf(lotto) == -1){ // 없는 숫자 발견 시
+          lottos.push(lotto);            // lottos에 추가
+        }
+      }
+      console.log(lottos.join('\t'));
+    }
+
+    //문자열 개체
+    let str = ' 1A34b 7c9z ';
+    console.log(str.length); //문자열 길이, 글자수
+    console.log(str.charAt(7)); //index 위치의 한 글자 추출 
+    console.log(str.charCodeAt(2)); //index 위치문자의 아스키 코드 값
+    console.log(String.fromCharCode(65)); //코드에 대한 문자 리턴
+    console.log(str.concat('XYZ'));
+    console.log(str.indexOf('d'));
+    console.log(str.match('u'));
+    console.log(str.replace('kd', 'ba'));
+    console.log(str.search('d'));
+    console.log(str.slice(3,7));
+    console.log(str.split(' '));
+    console.log(str.substr(3,7));
+    console.log(str.substring(3,7));
+    console.log(str.toLowerCase());
+    console.log(str.toUpperCase());
+    console.log(str.trim());
+
+    //주민번호를 이용해서 나이와 성별 출력
+    //1이면 남자, 2이면 여자,
+    //3이면 2000년이후 남자, 4면 2000년 이후 여자
+    //5면 귀화한 남, 6이면 귀화한 여자
+    //나이 계산
+    //'나이는 00살, 셩별은 00입니다.' 출력
+    let idNum = "971225-1234567";
+    let currYear = 26
+    console.log(idNum.substr(0, 2));
+    console.log(idNum.substr(7, 1));
+    let age = currYear - idNum.substring(0,2);
+    if(age < 0){
+      age = currYear + 100 - idNum.substring(0,2);
+    }
+
+    switch(Number(idNum.charAt(7))){
+      case 1 : gender = '남자'; break;
+      case 2 : gender = '여자'; break;
+      case 3 : gender = '2000년 이후 남자'; break;
+      case 4 : gender = '2000년 이후 여자'; break;
+      case 5 : gender = '귀화한 남자'; break;
+      case 6 : gender = '귀화한 여자'; break;
+    }
+    console.log(`나이는 ${age}살, 성별은 ${gender}입니다`);
+
+  </script>
+</body>
+</html>

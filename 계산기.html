@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>계산가</title>
+</head>
+<body>
+  <h1>계산기</h1>
+  <form>
+    <ul>
+      <li>
+        <label for="num1">수1</label>
+        <input type="text" name="num1" id="num1">
+      </li>
+      <li>
+        <label for="num2">수2</label>
+        <input type="text" name="num2" id="num2">
+      </li>
+      <hr>
+      <li>
+        <label for="result">결과</label>
+        <input type="text" name="result" id="result">
+      </li>
+      <br>
+      <button type="button" id="plus">더하기</button>
+      <button type="button" id="minus">빼기</button>
+      <button type="button" id="multy">곱하기</button>
+      <button type="button" id="didvd">나누기</button>
+      <button type="reset" id="reset">초기화</button>
+    </ul>
+  </form>
+  <script>
+    //문서객체 가져오기
+    let plusBtn = document.querySelector('#plus');
+    let minusBtn = document.querySelector('#minus');
+    let multyBtn = document.querySelector('#multy');
+    let didvdBtn = document.querySelector('#didvd');
+    let su1 = document.querySelector('#num1');
+    let su2 = document.querySelector('#num2');
+    let result = document.querySelector('#result');
+
+    //이벤트 처리
+    //덧셈
+    plusBtn.onclick = function(){
+      //입력된 수 가져오기
+      let p_result = Number(su1.value) + Number(su2.value);
+      result.value = p_result;
+    }
+    //빼기
+    minusBtn.onclick = function(){
+      let m_result = su1.value - su2.value;
+      result.value = m_result;
+    }
+    //곱셈
+    multyBtn.onclick = function(){
+      let mult_result = su1.value * su2.value;
+      result.value = mult_result;
+    }
+    //나눗셈
+    didvdBtn.onclick = function(){
+      let did_result = su1.value / su2.value;
+      result.value = did_result;
+    }
+    
+  </script>
+</body>
+</html>

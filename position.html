@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>position</title>
+  <style>
+    body{
+      background: url(IMG/봄.jpg) fixed no-repeat center;
+      /* background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-position: center; */
+      background-size: 200px;
+      /* opacity: 0.5; */
+    }
+    div{
+      background-color: beige;
+      border: 1px solid #aaa;
+    }
+    #box1{
+      width: 300px;
+      height: 100px;
+      /* background: linear-gradient(to right top,#e06060,#fff 50%,#00f); */
+      background: repeating-linear-gradient(to right,#000,#000 10%,#ff0 10%, #ff0 20%);
+    }
+    #bg_g{
+      width: 300px;
+      height: 200px;
+      margin: 10px 0;
+      /* background: radial-gradient(circle farthest-side at 10% 10%, rgb(252, 123, 3), rgb(34, 252, 34) 30%, rgb(165, 39, 238)); */
+      background: repeating-radial-gradient(circle farthest-side at 50% 50%, #ff0,#ff0 3%, #0f0 3%, #0f0 6%);
+    }
+    #box2{
+      width: 300px;
+      height: 300px;
+      background-color: aqua;
+      position: relative;
+      /* top: -50px;
+      left: 50px; */
+    }
+    .abs{
+      width: 50px;
+      height: 50px;
+      background-color: pink;
+      position: absolute;
+    }
+    #a1{
+      left: 0;
+      top: 0;
+    }
+    #a2{
+      right: 0;
+      top: 0;
+    }
+    #a3{
+      left: 0;
+      bottom: 0;
+    }
+    #a4{
+      right: 0;
+      bottom: 0;
+    }
+    #a5{
+      left: 125px;
+      top: 125px;
+      z-index: 10;
+    }
+    #box3{
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      position: fixed;
+      right: 30px;
+      top: 30px;
+      background-color: #fff;
+      border: none;
+      font-size: 30px;
+    }
+    img{
+      width: 100px;
+      height: 100px;
+    }
+    .hidden{
+      /* visibility: hidden; */
+      /*display: none; /* 영역 차지X */
+      opacity: 0.3;
+    }
+    img:hover{
+      opacity: 0.5;
+    }
+    .hidden:hover{ /* hover: 롤오버(커서에 반응) */
+      opacity: 1;
+    }
+    #z1{
+      background-color: rgb(223, 103, 22);
+      top: 120px;
+      left: 120px;
+      z-index: 20;
+    }
+    #z2{
+      background-color: rgb(141, 141, 216);
+      top: 115px;
+      left: 115px;
+      z-index: 999;
+    }
+    #bg{
+      background: url(IMG/레드향.jpg);
+      background-size: 200px 200px;
+      width: 200px;
+      height: 200px;
+      position: relative;
+    }
+    #bg h1{
+      position: absolute;
+      right: 10px;
+      bottom: 0;
+      color: #fff;
+      text-shadow: 3px 3px 5px #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="box1">box1</div>
+  <div id="bg_g">원형 그라데이션</div>
+  <div id="box2">box2
+    <div id="a1" class="abs">a1</div>
+    <div id="a2" class="abs">a2</div>
+    <div id="a3" class="abs">a3</div>
+    <div id="a4" class="abs">a4</div>
+    <div id="a5" class="abs">a5</div>
+    <div id="z1" class="abs">z1</div>
+    <div id="z2" class="abs">z2</div>
+  </div>
+  <div id="box3">fixd</div>
+  <figure>
+    <img src="IMG/레드향.jpg" alt="레드향">
+    <img class="hidden" src="IMG/봄.jpg" alt="봄">
+    <img src="IMG/레드향.jpg" alt="레드향">
+  </figure>
+  <figure>
+    <div id="bg">
+      <h1>ㄱㄱㅎ</h1>
+    </div>
+  </figure>
+</body>
+</html>

@@ -1,0 +1,16 @@
+table{
+  border: 1px, solid, purple;
+  width: 300px;
+  height: 300px;
+}
+th{
+  border: 1px, solid, purple;
+  background-color: greenyellow;
+}
+td{
+  border: 1px, solid, purple;
+}
+tr{
+  border: 1px, solid, purple;
+  text-align: center;
+}

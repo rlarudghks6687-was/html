@@ -1,0 +1,128 @@
+    //성적표 만들기
+    //학생: hong, sung, lee 객체만들기
+    //학생의 속성: 이름, 국어, 영어, 수학
+    //메서드: 총점, 평균 구하는 메서드 작성
+
+    //학생 객체 생성자 함수
+    function Student(name, kor, eng, math, java){
+      this.name = name,
+      this.kor = kor,
+      this.eng = eng,
+      this.math = math,
+      this.java = java
+    }
+
+    //생성자 함수의 공통 공간에 생성 -> 모든 인스턴스(객체)가 사용하도록 함(메모리 공간 효율적 사용가능)
+    Student.prototype.getsum = function(){
+        return this.kor + this.eng + this.math + this.java;
+      }
+    Student.prototype.getavg = function(){
+        return parseInt(this.getsum() / 4);
+      }
+
+    Student.prototype.getgrade = function(){
+      let grade = ``;
+      switch(parseInt(this.getavg() / 10)){
+        case 10 :
+        case 9 : grade = 'A'; break;
+        case 8 : grade = 'B'; break;
+        case 7 : grade = 'C'; break;
+        case 6 : grade = 'D'; break;
+        default : grade = 'F'; break;
+      }
+      return grade;
+    }
+    
+    
+    //배열에 학생 객체 저장
+    let students = [
+      new Student('홍길동', 100, 90, 80, 70),
+      new Student('성춘향', 88, 100, 99, 80),
+      new Student('이몽룡', 100, 100, 95, 99),
+      new Student('aaa', 70, 100, 80, 77),
+      new Student('bbb', 80, 90, 85, 78),
+      new Student('ccc', 90, 80, 90, 56),
+      new Student('ddd', 100,70, 95, 64),
+      new Student('eee', 60, 60, 100, 90)
+    ];
+    console.log(students);
+    console.log(students[0] instanceof Student);
+    let person = {
+      name : '아무개'
+    }
+    console.log(person instanceof Student);
+
+    //석차 구하기(중첩 반복문 사용)
+    // Student.prototype.getrank = function(){
+    //   let count = 1;
+    //     for(let i = 0; i < students.length; i++){
+    //       if(this.getsum() < students[i].getsum()){
+    //         count ++;
+    //       }
+    //     }
+    //   return count;
+    // }
+    for(let i=0; i < students.length; i++){
+      let count = 1;
+      let st = students[i].getsum() //총점
+      for(let j=0; j < students.length; j++){
+        let cst = students[j].getsum(); //비교되는 학생의 총 점
+        if(st < cst){
+          count++;
+        }
+        students[i].rank = count;
+      }
+    }
+
+    //문서에 표 출력
+    let table = `<table>
+    <th>이름</th>
+    <th>총점</th>
+    <th>평균</th>
+    <th>등급</th>
+    <th>석차</th>`;
+    for(let i = 0; i < students.length; i++){
+      table += `<tr>
+      <td>${students[i].name}</td>
+      <td>${students[i].getsum()}</td>
+      <td> ${students[i].getavg()}</td>
+      <td>${students[i].getgrade()}</td>
+      <td>${students[i].rank}</td>`
+      table +=`</tr>`;
+    }
+    table +=`</table>`;
+
+    //문서에 표 작성
+    document.write(table);
+    
+    // 과목 추가: 자바(속성 추가)
+    // 등급 추가: A, B, C, D, F(메서드 추가)
+    // 학생 추가: 5명(객체데이터 추가)
+    // css작성 표 디자인
+    // css, js, 외부파일로 저장 -> 연결
+    //총점을 이용해서 석차 구하기
+    //석차를 구해서 rank(key) 에 추가
+    
+
+    function Product(name, weight, price){
+      this.name = name,
+      this.weight = weight,
+      this.price = price
+    }
+    Product.prototype.calculate = function(w){ //매개변수(parameter)
+      return (w / this.weight) * this.price;
+    }
+
+    // let meets = [
+    //   new Product('삼겹살', 100, 1690),
+    //   new Product('항정살', 50, 5000)
+    // ];
+    let g = prompt('얼마나 드릴까요?(g)');
+    let sam = new Product('삼겹살', 100, 1690);
+    let hang = new Product('항정살', 50, 5000);
+
+    let price = hang.calculate(g);
+    console.log(`${hang.name} 가격: ${price}원`);
+
+    // console.log(`${meets[1].name} 가격은 ${meets[1].calculate(100)}원 입니다.`);
+    // console.log(`${meets[1].name} 가격은 ${meets[1].calculate(500)}원 입니다.`);

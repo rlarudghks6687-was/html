@@ -1,0 +1,77 @@
+#container{
+  width: 1000px;
+  margin: 0 auto;
+}
+header{
+  background-color: aqua;
+  overflow: hidden;
+}
+nav{
+  float: right;
+  width: 450px;
+  padding: 10px;
+}
+nav li{
+  float: left;
+  list-style: none;
+  padding: 10px;
+}
+nav a{
+  color: white;
+  font-weight: bold;
+}
+a{
+  text-decoration: none;
+}
+main{
+  border: 2px solid red;
+  padding: 10px;
+}
+#menu{
+  text-align: center;
+}
+#menu li{
+  display: inline-block;
+  padding: 10px;
+}
+main img{
+  width: 150px;
+  height: 150px;
+}
+article{
+  border: 2px dotted rebeccapurple;
+  padding: 10px;
+  border-radius: 20px;
+}
+figure{
+  text-align: center;
+}
+section{
+  background-color: pink;
+  padding: 10px;
+}
+footer{
+  background-color: royalblue;
+  clear: both;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+}
+footer p{
+  margin-top: 0;
+}
+#top{
+  width: 50px;
+  height: 50px;
+  background-color: blueviolet;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  position: fixed;
+  right: 20px;
+  bottom: 30px;
+}
+#top a{
+  text-decoration: none;
+  color: #fff;
+}

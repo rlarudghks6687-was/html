@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js배열</title>
+</head>
+<body>
+  <h1>배열(array)</h1>
+  <script>
+    //배열: 하나의 변수에 여러 데이터를 저장하는 자료구조
+    //배열의 데이터 가져오기: 인덱스(index) - 방번호(0부터 시작)
+    let colors = ['red', 'orange', 'yellow', 'green'];
+    let nums = [1, 10, 50, 7, 9, 55];
+    console.log(colors);
+    console.log(colors[1]);
+    //배열의 크기
+    console.log(colors.length);
+    //배열의 인덱스 가져오기(for in)
+    for(let idx in colors){
+      console.log(`인덱스: ${idx}`);
+    }
+    //배열의 요소(값) 가져오기(for of)
+    for(let element of colors){
+      console.log(`배열 요소: ${element}`)
+    }
+
+    //배열 연결하기(concat())
+    let newArray = colors.concat(nums);
+    console.log(newArray);
+
+    //배열의 요소 -> 문자열로 나열(join())
+    console.log(nums.join(' : '));
+
+    //배열의 요소 추가/제거
+    //뒤에서 추가/제거(push, pop)
+    colors.push('black'); //추가
+    colors.pop(); //제거
+    colors.pop();
+    //앞에서 추가/제거(unshift, shift)
+    colors.unshift('white');
+    colors.shift();
+    console.log(colors)
+
+    //원하는 위치에서 추가/제거(splice)
+    //원본 변화됨
+    colors.splice(1, 2, 'purple', 'pink', 'green');
+    console.log(colors);
+
+    //원하는 위치에서 요소 추출(slice)
+    //원본 변화 X
+    newArray = colors.slice(1, 3);
+    console.log(colors);
+    console.log(newArray);
+
+    //임의의 수(난수) 5개를 발생시켜서 배열에 저장하세요
+    //수의 범위: 1 에서 100까지
+    //중복된 경우는 저장하지 마세요
+    //배열 요소를 : 구분자로 구분해서 출력하세요(for of), join()
+    console.log('-----------난수 5개-----------');
+    let rnums = [];
+    for(let i = 1; i <= 5; i++){
+      let rnum = parseInt(Math.random() * 100) + 1; //난수 발생
+      if(rnums.indexOf(rnum) == -1){
+        rnums.push(rnum);
+      }else{
+        i--;
+      }
+    } 
+    console.log(rnums.join(' : '));
+    
+
+    let count = 0;
+    rnums = [];
+    while(count < 5){
+      let rnum = parseInt(Math.random() * 100) + 1; //난수 발생
+      if(rnums.indexOf(rnum) == -1){ // 중복된 숫자 발견시
+        rnums.push(rnum);
+        count++;
+      }  
+    }
+    console.log(rnums.join(' : '));
+
+    //배열의 인덱수와 요소를 가져오는 메서드(forEach())
+    colors.forEach((element, idx) => {
+      console.log(`${idx} : ${element}`)
+    });
+
+    //배열의 요소를 변경해서 새로운 배열 생성(map())
+    newArray = nums.map((ele) => parseInt(ele * 1.1));
+    console.log(nums);
+    console.log(newArray);
+
+    //배열의 요소 중 조건에 만족하는 요소만 추출(filter())
+    newArray = nums.filter((ele) => ele < 5);
+    console.log(nums);
+    console.log(newArray);
+    //every(): and 모든 조건이 만족하면 true
+    let check = nums.every((ele) => ele > 10)
+    console.log(check);
+    
+    //some(): or 하나 이상이라도 포함되면 true
+    check = nums.some(checkFuntion);
+    console.log(check);
+
+    function checkFuntion(ele){
+      return ele > 10;
+    }
+
+    //배열의 합(reduce(), reduceRight())
+    let sum = nums.reduce((r, e) => r + e);
+    console.log(sum);
+
+    //배열의 요소 정렬(sort())
+    //코드 값으로 오름차순 정렬(기본);
+    console.log(nums);
+    console.log(nums.sort((a,b) => a - b)); //오름차순
+    console.log(nums.sort((a,b) => b - a)); //내림차순
+
+    console.log(colors);
+    console.log(colors.sort()); //문자 오름차순
+    console.log(colors.reverse()); //문자 내림차순
+
+    //배열의 합을 구해서 배열의 마지막 요소로 저장 및 출력(forEach())
+    //메서드 활용
+    let newNums = [2, 4, 6, 8, 10];
+    sum = newNums.reduce((r, e) => r + e); // 배열의 합
+    newNums.push(sum); // 구해진 합을 newNums 배열의 끝에 추가
+    newNums.forEach((ele, idx) => { // 배열 요소 나열 forEach(배열요소, 인덱스)
+      console.log(`${idx} : ${ele}`);
+    });
+
+  </script>
+</body>
+</html>

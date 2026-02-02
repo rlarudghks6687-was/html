@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+  <style>
+    /* #hide{
+      display: none;
+    } */
+    img{
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>문서객체모델(DOM)</h1>
+  <div class="show">
+    <h3>보이는 택스트</h3>
+    <p id="hide">숨기는 택스트</p>
+  </div>
+  <ul>
+    <li class="list">클래스1</li>
+    <li class="list">클래스2</li>
+    <li class="list">클래스3</li>
+    <li class="list">클래스4</li>
+  </ul>
+  <img id="imgsrc" src="IMG/레드향.jpg" alt="레드향">
+  <script>
+    //문서 객체 다루기
+    //문서 객체 가져오기
+    let id = document.querySelector('#hide');
+    console.log(id);
+    id.innerHTML = '<a href="index.html">수정된 택스트</a>';
+    let list = document.querySelectorAll('.list');
+    console.log(list);
+    let list1 = document.querySelector('li');
+    console.log(list1);
+
+    //태그안의 내용 가져오기
+    let content1 = document.querySelector('.show').innerHTML;
+    let content2 = document.querySelector('.show').innerText;
+    let content3 = document.querySelector('.show').textContent;
+    console.log(content1);
+    console.log(content2);
+    console.log(content3);
+
+    //이미지 변경
+    let imgsrc = document.querySelector('#imgsrc');
+    // imgsrc.src = 'IMG/봄.jpg';
+    imgsrc.setAttribute('src', 'IMG/봄.jpg');
+    //스타일 변경
+    imgsrc.style.borderRadius = '50%';
+    //요소 삭제
+    // imgsrc.remove();
+
+    //표준이벤트 처리
+    imgsrc.addEventListener('mouseover', function(){
+      imgsrc.setAttribute('src', 'IMG/레드향.jpg');
+    });
+    imgsrc.addEventListener('mouseout', function(){
+      imgsrc.setAttribute('src', 'IMG/봄.jpg');
+    });
+    
+    //이벤트 전파(부모: 이벤트. 자식: 이벤트)
+    let p = document.querySelector('.show')
+    p.addEventListener('click', function(){
+      alert('부모 이벤트 실행');
+    }, false);
+
+    id.addEventListener('click', function(){
+      alert('자식 이벤트 실행');
+      event.stopPropagation();//전파 중지  //stopPropagation(): 이벤트 전달을 원치 않는 경우
+    }, false);
+  </script>
+</body>
+</html>

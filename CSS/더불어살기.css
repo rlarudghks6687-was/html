@@ -1,0 +1,51 @@
+#container{
+  width: 1000px;
+  margin: 0 auto;
+}
+header{
+  background-color: rgb(32, 66, 38);
+  overflow: hidden;
+}
+header h1{
+  color: #fff;
+  padding: 10px;
+  padding-top: 10px;
+  margin-top: -15;
+}
+nav{
+  float: right;
+  width: 450px;
+  padding: 10px;
+}
+nav li{
+  float: left;
+  list-style: none;
+  padding: 10px;
+  padding-top: -90px;
+}
+nav a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: lighter;
+}
+main{
+  border: 3px solid blue;
+  padding: 10px;
+  float:initial
+}
+section img{
+  float: right;
+  width: 200px;
+  height: 380px;
+  display: block;
+}
+li{
+  padding: 8px
+}
+footer{
+  background-color: rgb(32, 66, 38);
+  clear: both;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+}

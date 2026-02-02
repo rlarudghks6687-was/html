@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js반복문연습</title>
+  <style>
+    table{
+      border: 1px solid #ccc;
+    }
+    tr{
+      border: 1px solid #ccc;
+    }
+    td{
+      border: 1px solid #ccc;
+    }
+  </style>
+  
+</head>
+<body>
+  <h1>반복문연습</h1>
+  <script>
+    //1에서 10사이의 두 수를 입력받아서(prompt(), 저장변수)
+    //두 수 중 작은 수는 행, 큰 수는 열로 하는 표 작성(if) <tr>, <td>
+    //표의 데이터는 행과 열을 곱한 값(중첩for문)<table>
+    //표는 문서에 출력(document)
+    let num1 = parseInt(prompt(`수를 입력`));
+    let num2 = parseInt(prompt(`수를 입력`));
+    let reseult = `<h2>vv</h2><table>`;
+    let row = 0;
+    let col = 0;
+    if(num1 > num2){
+      row = num2;
+      col = num1;
+    }else{
+      row = num1;
+      col = num2;
+
+    }
+    for(let k = 0; k < row; k++){
+        reseult += `<tr>`;
+          for(let l = 0; l < col; l++){
+            reseult += `<td>${(k+1)*(l+1)}</td>`;
+          }
+          reseult += `</tr>`;
+      }
+
+    reseult += `</table>`;
+    document.write(`${reseult}`);
+
+
+
+
+
+    row = parseInt(prompt(`수를 입력`));
+    col = parseInt(prompt(`수를 입력`));
+    let temp = 0;
+    reseult = `<h2>vv</h2><table>`;
+    if(row > col){
+      temp = col;
+      col = row;
+      row = temp;
+
+    }
+    for(let k = 0; k < row; k++){
+        reseult += `<tr>`;
+          for(let l = 0; l < col; l++){
+            reseult += `<td>${(k+1)*(l+1)}</td>`;
+          }
+          reseult += `</tr>`;
+      }
+
+    reseult += `</table>`;
+    document.write(`${reseult}`);
+
+  </script>
+</body>
+</html>
